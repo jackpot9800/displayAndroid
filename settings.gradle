@@ -1,0 +1,2 @@
+rootProject.name = "LiveTV Display Client"
+include ':app'

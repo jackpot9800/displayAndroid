@@ -1,0 +1,151 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.livetv.displayclient"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="34" />
+9-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml
+10
+11    <!-- Permissions nécessaires -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:7:5-79
+13-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.WAKE_LOCK" />
+14-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:8:5-68
+14-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:8:22-65
+15
+16    <!-- Déclaration pour Android TV / FireStick -->
+17    <uses-feature
+17-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:11:5-13:36
+18        android:name="android.software.leanback"
+18-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:12:9-49
+19        android:required="false" />
+19-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:13:9-33
+20    <uses-feature
+20-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:14:5-16:36
+21        android:name="android.hardware.touchscreen"
+21-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:15:9-52
+22        android:required="false" />
+22-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:16:9-33
+23
+24    <uses-permission android:name="com.android.providers.tv.permission.WRITE_EPG_DATA" />
+24-->[androidx.tvprovider:tvprovider:1.0.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\aecd8205ea3f470ec31b878fb4f3c75f\transformed\tvprovider-1.0.0\AndroidManifest.xml:22:5-90
+24-->[androidx.tvprovider:tvprovider:1.0.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\aecd8205ea3f470ec31b878fb4f3c75f\transformed\tvprovider-1.0.0\AndroidManifest.xml:22:22-87
+25    <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA" />
+25-->[androidx.tvprovider:tvprovider:1.0.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\aecd8205ea3f470ec31b878fb4f3c75f\transformed\tvprovider-1.0.0\AndroidManifest.xml:23:5-89
+25-->[androidx.tvprovider:tvprovider:1.0.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\aecd8205ea3f470ec31b878fb4f3c75f\transformed\tvprovider-1.0.0\AndroidManifest.xml:23:22-86
+26
+27    <permission
+27-->[androidx.core:core:1.9.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7da3e27adb8c02368eb46247c342376b\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+28        android:name="com.livetv.displayclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+28-->[androidx.core:core:1.9.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7da3e27adb8c02368eb46247c342376b\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+29        android:protectionLevel="signature" />
+29-->[androidx.core:core:1.9.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7da3e27adb8c02368eb46247c342376b\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+30
+31    <uses-permission android:name="com.livetv.displayclient.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+31-->[androidx.core:core:1.9.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7da3e27adb8c02368eb46247c342376b\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+31-->[androidx.core:core:1.9.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7da3e27adb8c02368eb46247c342376b\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+32
+33    <application
+33-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:18:5-56:19
+34        android:allowBackup="true"
+34-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:19:9-35
+35        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+35-->[androidx.core:core:1.9.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7da3e27adb8c02368eb46247c342376b\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+36        android:banner="@drawable/app_banner"
+36-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:27:9-46
+37        android:dataExtractionRules="@xml/data_extraction_rules"
+37-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:20:9-65
+38        android:debuggable="true"
+39        android:fullBackupContent="@xml/backup_rules"
+39-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:21:9-54
+40        android:icon="@mipmap/ic_launcher"
+40-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:22:9-43
+41        android:label="@string/app_name"
+41-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:23:9-41
+42        android:roundIcon="@mipmap/ic_launcher_round"
+42-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:24:9-54
+43        android:supportsRtl="true"
+43-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:25:9-35
+44        android:theme="@style/Theme.LiveTVDisplayClient" >
+44-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:26:9-57
+45
+46        <!-- Activity principale pour TV -->
+47        <activity
+47-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:31:9-41:20
+48            android:name="com.livetv.displayclient.MainActivity"
+48-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:32:13-41
+49            android:exported="true"
+49-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:33:13-36
+50            android:screenOrientation="landscape"
+50-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:35:13-50
+51            android:theme="@style/Theme.Leanback" >
+51-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:34:13-50
+52            <intent-filter>
+52-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:36:13-40:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:37:17-69
+53-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:37:25-66
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:38:17-77
+55-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:38:27-74
+56                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+56-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:39:17-86
+56-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:39:27-83
+57            </intent-filter>
+58        </activity>
+59
+60        <!-- Activity de visualisation des présentations -->
+61        <activity
+61-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:44:9-49:77
+62            android:name="com.livetv.displayclient.PresentationActivity"
+62-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:45:13-49
+63            android:configChanges="orientation|keyboardHidden|screenSize"
+63-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:49:13-74
+64            android:exported="false"
+64-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:46:13-37
+65            android:screenOrientation="landscape"
+65-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:48:13-50
+66            android:theme="@style/Theme.Fullscreen" />
+66-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:47:13-52
+67
+68        <!-- Service de mise à jour en arrière-plan -->
+69        <service
+69-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:52:9-54:40
+70            android:name="com.livetv.displayclient.UpdateService"
+70-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:53:13-42
+71            android:exported="false" />
+71-->C:\Users\Jackpot\Desktop\display_client_android\app\src\main\AndroidManifest.xml:54:13-37
+72
+73        <provider
+73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+74            android:name="androidx.startup.InitializationProvider"
+74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+75            android:authorities="com.livetv.displayclient.androidx-startup"
+75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+76            android:exported="false" >
+76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+77            <meta-data
+77-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+78                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+78-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+79                android:value="androidx.startup" />
+79-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Jackpot\.gradle\caches\8.12\transforms\eae2308cc30532fc3480dd892068243b\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+80            <meta-data
+80-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7e1771c521a17bca8ec996acad578e4d\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+81                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+81-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7e1771c521a17bca8ec996acad578e4d\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+82                android:value="androidx.startup" />
+82-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Jackpot\.gradle\caches\8.12\transforms\7e1771c521a17bca8ec996acad578e4d\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+83        </provider>
+84    </application>
+85
+86</manifest>

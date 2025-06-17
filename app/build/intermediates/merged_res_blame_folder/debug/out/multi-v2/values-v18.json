@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.livetv.displayclient.app-mergeDebugResources-30:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Jackpot\\.gradle\\caches\\8.12\\transforms\\94b9c9510706c6dc301febc3dfcf0a64\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Jackpot\\.gradle\\caches\\8.12\\transforms\\80b34ab5f69e9f54e51d864bbc317a95\\transformed\\leanback-1.0.0\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "10",
+                        "endColumns": "12",
+                        "endOffsets": "642"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "104",
+                        "endLines": "11",
+                        "endColumns": "12",
+                        "endOffsets": "691"
+                    }
+                }
+            ]
+        }
+    ]
+}

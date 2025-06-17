@@ -1,0 +1,78 @@
+[
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/drawable_app_banner.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/drawable/app_banner.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.livetv.displayclient.app-pngs-27:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/layout_activity_presentation.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/layout/activity_presentation.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/xml_data_extraction_rules.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/xml_backup_rules.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.livetv.displayclient.app-merged_res-32:/mipmap_ic_launcher.png.flat",
+        "source": "com.livetv.displayclient.app-main-34:/mipmap/ic_launcher.png"
+    }
+]

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.LiveTVDisplayClient" parent="@style/Theme.Leanback">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorPrimary">#2196F3</item>
+        <item name="android:colorPrimaryDark">#1976D2</item>
+        <item name="android:colorAccent">#FF4081</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:keepScreenOn">true</item>
+    </style>
+
+    <!-- Theme for fullscreen presentation -->
+    <style name="Theme.Fullscreen" parent="@style/Theme.Leanback">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:keepScreenOn">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Style for list items -->
+    <style name="PresentationListItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!-- Style for status text -->
+    <style name="StatusText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#CCCCCC</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- Style for headers -->
+    <style name="HeaderText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!-- Style for navigation instructions -->
+    <style name="NavigationInstructions">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#888888</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+    </style>
+</resources>

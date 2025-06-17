@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#1a1a1a">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LiveTV Display Client"
+            android:textSize="24sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chargement..."
+            android:textSize="14sp"
+            android:textColor="#cccccc" />
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#333333"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Instructions -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sélectionnez une présentation à afficher :"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Liste des présentations -->
+    <ListView
+        android:id="@+id/presentations_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#2a2a2a"
+        android:divider="#333333"
+        android:dividerHeight="1dp"
+        android:padding="8dp"
+        android:choiceMode="singleChoice"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <!-- Footer avec instructions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Navigation : ↑↓ pour naviguer • ENTER pour sélectionner • MENU pour actualiser"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>
