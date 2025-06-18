@@ -1,17 +1,19 @@
 package com.displayclient;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONObject;
 
@@ -25,14 +27,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
-    private EditText serverUrlEditText;
-    private EditText displayKeyEditText;
-    private Button connectButton;
     private TextView statusTextView;
     private WebView displayWebView;
-    private LinearLayout configLayout;
 
     private OkHttpClient httpClient;
     private Handler heartbeatHandler;
@@ -50,62 +48,25 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initializeViews();
+        setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        statusTextView = findViewById(R.id.statusTextView);
+        displayWebView = findViewById(R.id.displayWebView);
+
+        displayWebView.getSettings().setJavaScriptEnabled(true);
+        displayWebView.getSettings().setDomStorageEnabled(true);
+        displayWebView.setWebViewClient(new WebViewClient());
+
         setupHttpClient();
         loadSavedSettings();
         setupHeartbeat();
     }
 
     private void initializeViews() {
-        LinearLayout mainLayout = new LinearLayout(this);
-        mainLayout.setOrientation(LinearLayout.VERTICAL);
-
-        // Configuration panel
-        configLayout = new LinearLayout(this);
-        configLayout.setOrientation(LinearLayout.VERTICAL);
-        configLayout.setPadding(20, 20, 20, 20);
-
-        TextView serverLabel = new TextView(this);
-        serverLabel.setText("URL du serveur:");
-        configLayout.addView(serverLabel);
-
-        serverUrlEditText = new EditText(this);
-        serverUrlEditText.setText("http://192.168.0.20/mods/livetv/display_actions.php");
-        configLayout.addView(serverUrlEditText);
-
-        TextView keyLabel = new TextView(this);
-        keyLabel.setText("Clé d'affichage:");
-        configLayout.addView(keyLabel);
-
-        displayKeyEditText = new EditText(this);
-        configLayout.addView(displayKeyEditText);
-
-        connectButton = new Button(this);
-        connectButton.setText("Connecter");
-        connectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                connectToServer();
-            }
-        });
-        configLayout.addView(connectButton);
-
-        // Status bar
-        statusTextView = new TextView(this);
-        statusTextView.setText("Non connecté");
-        statusTextView.setPadding(20, 10, 20, 10);
-
-        // WebView for display
-        displayWebView = new WebView(this);
-        displayWebView.getSettings().setJavaScriptEnabled(true);
-        displayWebView.getSettings().setDomStorageEnabled(true);
-        displayWebView.setWebViewClient(new WebViewClient());
-
-        mainLayout.addView(configLayout);
-        mainLayout.addView(statusTextView);
-        mainLayout.addView(displayWebView);
-
-        setContentView(mainLayout);
+        // No longer needed as views are initialized in onCreate
     }
 
     private void setupHttpClient() {
@@ -117,9 +78,8 @@ public class MainActivity extends Activity {
 
     private void loadSavedSettings() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        serverUrlEditText
-                .setText(prefs.getString(PREF_SERVER_URL, "http://192.168.0.20/mods/livetv/display_actions.php"));
-        displayKeyEditText.setText(prefs.getString(PREF_DISPLAY_KEY, ""));
+        serverUrl = prefs.getString(PREF_SERVER_URL, "");
+        displayKey = prefs.getString(PREF_DISPLAY_KEY, "");
     }
 
     private void saveSettings() {
@@ -144,15 +104,56 @@ public class MainActivity extends Activity {
     }
 
     private void connectToServer() {
-        serverUrl = serverUrlEditText.getText().toString().trim();
-        displayKey = displayKeyEditText.getText().toString().trim();
-
-        if (serverUrl.isEmpty() || displayKey.isEmpty()) {
+        if (serverUrl == null || serverUrl.isEmpty() || displayKey == null || displayKey.isEmpty()) {
             Toast.makeText(this, "L'URL du serveur et la clé d'affichage sont requises", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Show the server URL being used for connection
+        Toast.makeText(this, "Connexion au serveur: " + serverUrl, Toast.LENGTH_LONG).show();
+
         authenticateWithServer();
+    }
+
+    // Simple network discovery using UDP broadcast (example)
+    private void discoverServer() {
+        new Thread(() -> {
+            try {
+                java.net.DatagramSocket socket = new java.net.DatagramSocket();
+                socket.setBroadcast(true);
+
+                String discoveryMessage = "DISCOVER_DISPLAY_SERVER";
+                byte[] sendData = discoveryMessage.getBytes();
+
+                java.net.DatagramPacket sendPacket = new java.net.DatagramPacket(sendData, sendData.length,
+                        java.net.InetAddress.getByName("255.255.255.255"), 8888);
+                socket.send(sendPacket);
+
+                byte[] recvBuf = new byte[15000];
+                java.net.DatagramPacket receivePacket = new java.net.DatagramPacket(recvBuf, recvBuf.length);
+
+                socket.setSoTimeout(5000); // 5 seconds timeout
+                socket.receive(receivePacket);
+
+                String message = new String(receivePacket.getData()).trim();
+                String serverIp = receivePacket.getAddress().getHostAddress();
+
+                if (message.equals("DISPLAY_SERVER_RESPONSE")) {
+                    runOnUiThread(() -> {
+                        serverUrl = "http://" + serverIp + "/mods/livetv/display_actions.php";
+                        Toast.makeText(MainActivity.this, "Serveur découvert: " + serverUrl, Toast.LENGTH_LONG).show();
+                        saveSettings();
+                        connectToServer();
+                    });
+                }
+
+                socket.close();
+            } catch (Exception e) {
+                runOnUiThread(() -> {
+                    Toast.makeText(MainActivity.this, "Découverte du serveur échouée: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+        }).start();
     }
 
     private void authenticateWithServer() {
@@ -201,11 +202,6 @@ public class MainActivity extends Activity {
     private void onConnectionSuccess(JSONObject response) {
         try {
             isConnected = true;
-            connectButton.setEnabled(false);
-            serverUrlEditText.setEnabled(false);
-            displayKeyEditText.setEnabled(false);
-            configLayout.setVisibility(View.GONE);
-
             statusTextView.setText("Connecté");
             saveSettings();
 
@@ -317,6 +313,23 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         // Envoyer un statut "en pause" au serveur
@@ -331,6 +344,11 @@ public class MainActivity extends Activity {
         // Envoyer un statut "actif" au serveur
         if (isConnected) {
             sendStatusUpdate("online");
+        }
+        // Reload settings in case they changed
+        loadSavedSettings();
+        if (!isConnected) {
+            connectToServer();
         }
     }
 

@@ -3,10 +3,12 @@ package com.livetv.displayclient;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +29,11 @@ import retrofit2.Response;
 
 public class MainActivity extends Activity {
     
+    private static final String TAG = "MainActivity";
+    
     private ListView presentationsList;
     private TextView statusText;
+    private Button settingsButton;
     private List<Presentation> presentations;
     private ArrayAdapter<String> adapter;
     private ApiService apiService;
@@ -46,6 +51,7 @@ public class MainActivity extends Activity {
     private void initViews() {
         presentationsList = findViewById(R.id.presentations_list);
         statusText = findViewById(R.id.status_text);
+        settingsButton = findViewById(R.id.settings_button);
         
         presentations = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
@@ -59,20 +65,35 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     
     private void initApi() {
+        String serverUrl = SettingsActivity.getServerUrl(this);
+        ApiClient.setBaseUrl(serverUrl);
         apiService = ApiClient.getClient().create(ApiService.class);
     }
     
     private void loadPresentations() {
         statusText.setText("Chargement des présentations...");
+        Log.d(TAG, "Tentative de connexion à l'API...");
         
         Call<PresentationResponse> call = apiService.getPresentations();
         call.enqueue(new Callback<PresentationResponse>() {
             @Override
             public void onResponse(@NonNull Call<PresentationResponse> call, @NonNull Response<PresentationResponse> response) {
+                Log.d(TAG, "Réponse reçue. Code: " + response.code());
+                
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.d(TAG, "Réponse réussie avec " + response.body().getPresentations().size() + " présentations");
+                    
                     presentations.clear();
                     presentations.addAll(response.body().getPresentations());
                     
@@ -91,15 +112,17 @@ public class MainActivity extends Activity {
                     
                     statusText.setText(presentations.size() + " présentation(s) disponible(s)");
                 } else {
-                    statusText.setText("Erreur lors du chargement");
-                    Toast.makeText(MainActivity.this, "Erreur de connexion", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Erreur de réponse. Code: " + response.code() + ", Message: " + response.message());
+                    statusText.setText("Erreur lors du chargement (Code: " + response.code() + ")");
+                    Toast.makeText(MainActivity.this, "Erreur de connexion: " + response.code(), Toast.LENGTH_LONG).show();
                 }
             }
             
             @Override
             public void onFailure(@NonNull Call<PresentationResponse> call, @NonNull Throwable t) {
-                statusText.setText("Erreur de connexion");
-                Toast.makeText(MainActivity.this, "Impossible de se connecter au serveur", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Échec de la connexion", t);
+                statusText.setText("Erreur de connexion: " + t.getMessage());
+                Toast.makeText(MainActivity.this, "Impossible de se connecter au serveur: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

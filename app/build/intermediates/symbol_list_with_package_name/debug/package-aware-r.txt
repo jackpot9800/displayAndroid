@@ -3731,6 +3731,7 @@ id contentPanel
 id content_container
 id content_fragment
 id content_frame
+id content_layout
 id content_text
 id contiguous
 id continuousVelocity
@@ -3781,6 +3782,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id displayWebView
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3978,6 +3980,7 @@ id mediaListHeader
 id mediaRowSelector
 id mediaRowSeparator
 id media_actions
+id menu_settings
 id message
 id middle
 id mini
@@ -4062,7 +4065,6 @@ id playback_progress
 id playing
 id position
 id postLayout
-id presentations_list
 id pressed
 id progress_bar
 id progress_circular
@@ -4157,8 +4159,8 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id statusTextView
 id status_bar_latest_event_content
-id status_text
 id stop
 id stretch
 id submenuarrow
@@ -4203,6 +4205,7 @@ id title_orb
 id title_template
 id title_text
 id toggle
+id toolbar
 id top
 id topPanel
 id total_time
@@ -4538,6 +4541,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout video_surface_fragment
+menu main_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
